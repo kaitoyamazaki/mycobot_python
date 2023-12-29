@@ -7,6 +7,9 @@ import serial
 from pymycobot.mycobot import MyCobot
 from pymycobot.genre import Coord
 from pymycobot.genre import Angle
+import csv
+import numpy as np
+import pandas as pd
 
 port: str
 mc: MyCobot
@@ -41,46 +44,26 @@ def setup():
         DEBUG = True
     # mc = MyCobot(port, debug=True)
     mc = MyCobot(port, baud, debug=DEBUG)
-    mc.send_angles([0.0, 10.0, -10.0, -10.0, 0.0, -45], 100)
+    mc.send_angles([0.0, 0.0, 0.0, 0.0, 0.0, -45], 100)
     time.sleep(1)
 
 class ApiTest():
 
     def __init__(self, mycobot):
         self.mc = mycobot
+        self.filepath = "../data/theta_data.csv"
+        self.df = pd.read_csv(self.filepath, header=None)
+        self.data = self.df.values
 
     def play(self):
         print(f"connected mycobot!")
-        #now_angle = self.mc.get_angles()
-        #print(f"now angle is : {now_angle}")
-        #self.mc.send_angle(2, -80, 100)
-        ##self.mc_angle(4)
-        #time.sleep(2)
-        #now_coord = self.mc.get_coords()
-        #print(f"now_coord is : {now_coord}")
-        ##self.mc.send_angle(2, -30, 100)
-        ##time.sleep(1)
-        #self.mc.send_angles([0.0, 10.0, -10.0, 10.0, 0.0, -45], 100)
-        #time.sleep(2)
-        #now_angle = self.mc.get_angles()
-        #print(f"now angle is : {now_angle}")
-        #now_coord = self.mc.get_coords()
-        #print(f"now_coord is : {now_coord}")
-        #time.sleep(2)
-        #self.mc.send_angles([0.0, 0.0, 0.0, 0.0, 0.0, -45], 100)
-        #time.sleep(2)
-        now_angle = self.mc.get_angles()
-        print(f"now angle is : {now_angle}")
-        now_coord = self.mc.get_coords()
-        print(f"now_coord is : {now_coord}")
-        time.sleep(2)
-        self.mc.send_coord(Coord.Y.value, -100, 100)
-        self.mc.send_angle(2, -30, 100)
-        time.sleep(2)
-        now_angle = self.mc.get_angles()
-        print(f"now angle is : {now_angle}")
-        now_coord = self.mc.get_coords()
-        print(f"now_coord is : {now_coord}")
+
+        data = self.data
+        for i in range(len(data)):
+            now_data = data[i]
+            self.mc.send_angles([0.0, now_data[0], now_data[1], now_data[2], 0.0, -45], 100)
+            time.sleep(0.5)
+
         self.mc.send_angles([0.0, 0.0, 0.0, 0.0, 0.0, -45], 100)
 
 if __name__ == "__main__":
