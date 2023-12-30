@@ -69,7 +69,7 @@ class ApiTest():
             self.mc.send_angles([0.0, now_data[0], now_data[1], now_data[2], 0.0, -45], 100)
             angles = self.mc.get_angles()
             print(f"angles is {angles}")
-            time.sleep(0.1)
+            time.sleep(0.05)
 
         self.mc.send_angles([0.0, 0.0, 0.0, 0.0, 0.0, -45], 100)
 
