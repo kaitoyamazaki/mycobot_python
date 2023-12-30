@@ -44,14 +44,14 @@ def setup():
         DEBUG = True
     # mc = MyCobot(port, debug=True)
     mc = MyCobot(port, baud, debug=DEBUG)
-    mc.send_angles([-45.0, -80.0, -20.0, 10.0, 0.0, -45], 100)
+    mc.send_angles([0.0, 0.0, 0.0, 0.0, 0.0, 45.0], 100)
     time.sleep(1)
 
 class ApiTest():
 
     def __init__(self, mycobot):
         self.mc = mycobot
-        self.filepath = "../data/trapezoidal_control_y2.csv"
+        self.filepath = "../data/deg_cobot_data_edit.csv"
         self.df = pd.read_csv(self.filepath, header=None)
         self.data = self.df.values
 
@@ -69,4 +69,4 @@ class ApiTest():
 if __name__ == "__main__":
     setup()
     manipulator = ApiTest(mc)
-    manipulator.play() 
+    #manipulator.play() 
