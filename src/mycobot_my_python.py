@@ -21,7 +21,7 @@ def setup():
     plist = list(serial.tools.list_ports.comports())
     idx = 1
     for port in plist:
-        print("{} : {}".format(idx, port))
+        #print("{} : {}".format(idx, port))
         idx += 1
 
     #_in = input("\nPlease input 1 - {} to choice:".format(idx - 1))
