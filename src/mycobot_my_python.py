@@ -51,7 +51,7 @@ class ApiTest():
 
     def __init__(self, mycobot):
         self.mc = mycobot
-        self.filepath = "../data/deg_control_data2.csv"
+        self.filepath = "../data/deg_cobot_data2.csv"
         self.df = pd.read_csv(self.filepath, header=None)
         self.data = self.df.values
 
@@ -61,7 +61,7 @@ class ApiTest():
         data = self.data
         for i in range(len(data)):
             now_data = data[i]
-            self.mc.send_angles([-45.0, now_data[0], now_data[1], now_data[2], 0.0, -45], 100)
+            self.mc.send_angles([0.0, now_data[0], now_data[1], now_data[2], 0.0, -45], 100)
             time.sleep(0.1)
 
         self.mc.send_angles([0.0, 0.0, 0.0, 0.0, 0.0, -45], 100)
