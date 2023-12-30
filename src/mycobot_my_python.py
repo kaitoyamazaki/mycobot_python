@@ -44,7 +44,7 @@ def setup():
         DEBUG = True
     # mc = MyCobot(port, debug=True)
     mc = MyCobot(port, baud, debug=DEBUG)
-    mc.send_angles([0.0, 0.0, 0.0, 0.0, 0.0, -45], 100)
+    mc.send_angles([-45.0, -80.0, -20.0, 10.0, 0.0, -45], 100)
     time.sleep(1)
 
 class ApiTest():
@@ -61,7 +61,7 @@ class ApiTest():
         data = self.data
         for i in range(len(data)):
             now_data = data[i]
-            self.mc.send_angles([45, now_data[0], now_data[1], now_data[2], 0.0, -45], 100)
+            self.mc.send_angles([-45.0, now_data[0], now_data[1], now_data[2], 0.0, -45], 100)
             time.sleep(0.1)
 
         self.mc.send_angles([0.0, 0.0, 0.0, 0.0, 0.0, -45], 100)
