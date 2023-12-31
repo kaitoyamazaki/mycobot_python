@@ -64,9 +64,9 @@ class ApiTest():
         for i in range(len(data)):
             now_data = data[i]
             self.mc.send_angles([0.0, now_data[0], now_data[1], now_data[2], 0.0, -45], 50)
-            #angles = self.mc.get_angles()
+            j2 = self.mc.get_encoder(2)
             #print(f"angles is {angles}")
-            time.sleep(0.05)
+            #time.sleep(0.01)
 
         time.sleep(1)
         self.mc.send_angles([0.0, 0.0, 0.0, 0.0, 0.0, -45], 100)
