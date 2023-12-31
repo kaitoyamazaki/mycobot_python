@@ -5,9 +5,6 @@ import os
 import serial
 
 from pymycobot.mycobot import MyCobot
-from pymycobot.genre import Coord
-from pymycobot.genre import Angle
-import csv
 import numpy as np
 import pandas as pd
 
@@ -66,7 +63,7 @@ class ApiTest():
         data = self.data
         for i in range(len(data)):
             now_data = data[i]
-            self.mc.send_angles([0.0, now_data[0], now_data[1], now_data[2], 0.0, -45], 100)
+            self.mc.send_angles([0.0, now_data[0], now_data[1], now_data[2], 0.0, -45], 50)
             angles = self.mc.get_angles()
             #print(f"angles is {angles}")
             #time.sleep(0.01)
