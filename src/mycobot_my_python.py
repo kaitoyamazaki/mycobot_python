@@ -68,6 +68,7 @@ class ApiTest():
             #print(f"angles is {angles}")
             time.sleep(0.01)
             if(i == len(data)/2):
+                print(f"i : {i}")
                 time.sleep(1)
 
         time.sleep(1)
