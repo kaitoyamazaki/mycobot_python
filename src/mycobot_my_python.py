@@ -67,6 +67,8 @@ class ApiTest():
             #angles = self.mc.get_angles()
             #print(f"angles is {angles}")
             time.sleep(0.01)
+            if(i == len(data)/2):
+                time.sleep(1)
 
         time.sleep(1)
         self.mc.send_angles([0.0, 0.0, 0.0, 0.0, 0.0, -45], 100)
