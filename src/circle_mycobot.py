@@ -53,7 +53,7 @@ class ApiTest():
 
     def __init__(self, mycobot):
         self.mc = mycobot
-        self.filepath = "../data/dtheta2.csv"
+        self.filepath = "../data/dtheta3.csv"
         self.df = pd.read_csv(self.filepath, header=None)
         self.data = self.df.values
 
