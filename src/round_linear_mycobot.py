@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-#直線運動(往復なし)だと思います
+#往復直線運動だと思います
 
 import time
 import os
@@ -54,7 +54,7 @@ class ApiTest():
 
     def __init__(self, mycobot):
         self.mc = mycobot
-        self.filepath = "../data/deg_cobot_data3.csv"
+        self.filepath = "../data/deg_cobot_data5.csv"
         self.df = pd.read_csv(self.filepath, header=None)
         self.data = self.df.values
 

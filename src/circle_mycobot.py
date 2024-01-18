@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+#円軌道でmycobotが動作します.
 
 import time
 import os

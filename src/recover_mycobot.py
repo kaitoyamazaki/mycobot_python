@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+#途中でロボットアームが停止したとき用のプログラムです
 
 import time
 import os
@@ -16,30 +17,33 @@ mc: MyCobot
 sp: int 
 
 def setup():
-    print("")
+    #print("")
     global port, mc
     plist = list(serial.tools.list_ports.comports())
     idx = 1
     for port in plist:
-        print("{} : {}".format(idx, port))
+        #print("{} : {}".format(idx, port))
         idx += 1
 
-    _in = input("\nPlease input 1 - {} to choice:".format(idx - 1))
+    #_in = input("\nPlease input 1 - {} to choice:".format(idx - 1))
+    _in = "1"
     port = str(plist[int(_in) - 1]).split(" - ")[0].strip()
-    print(port)
-    print("")
+    #print(port)
+    #print("")
 
     baud = 1000000
-    _baud = input("Please input baud(default:1000000):")
+    #_baud = input("Please input baud(default:1000000):")
+    _baud = "1000000"
     try:
         baud = int(_baud)
     except Exception:
         pass
-    print(baud)
-    print("")
+    #print(baud)
+    #print("")
 
     DEBUG = False
-    f = input("Wether DEBUG mode[Y/n](default:n):")
+    #f = input("Wether DEBUG mode[Y/n](default:n):")
+    f = "n"
     if f in ["y", "Y", "yes", "Yes"]:
         DEBUG = True
     # mc = MyCobot(port, debug=True)
